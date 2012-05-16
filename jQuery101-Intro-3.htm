@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>jQuery 101 - Introduction</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="common.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="arrow"></div>
+    <div id="pageHeader">jQuery 101 - Making JavaScript Fun Again</div>
+    <div id="topic">Making Use of jQuery</div>
+    <ul>
+    	<li id="main" data-notes="In only a few steps, you'll be able to put jQuery to full use. It's amazing how much functionality they've stuffed into such a small footprint.">
+			<p><img src="list.png" class="notes" /> How to Start Using jQuery on Your Website</p>
+			<ul>
+				<li id="sub1" class="hiddenListitem" data-notes="Only a single JavaScript (.js) file is required to use jQuery. There are other plugins that we may often use, but for the basic functionality we're learning today, everything is self-contained in this single file.">
+					<div><img src="list.png" class="notes" /> Single .js File</div>
+				</li>
+				<li id="sub2" class="hiddenListitem" data-notes="The minified version is what should be used in production. White space and comments are removed, and variable names shortened. The full version is good for debugging and great for learning.">
+					<div><img src="list.png" class="notes" /> Minified and Full Versions</div>
+				</li>
+				<li id="sub3" class="hiddenListitem" data-notes="We can also protect against a CDN being down.">
+					<div><img src="list.png" class="notes" /> Content Delivery Networks (CDNs)</div>
+				</li>
+				<li id="sub4" class="hiddenListitem" data-notes="On our page, we'll need a &lt;script&gt; tag wrapping any calls we make to the jQuery API (and all other JavaScript we'll be using). It's recommended that we offload this into its own .js file, and include it in the same way we include the jQuery.js file (*after* the jQuery reference). There are exceptions that we'll discuss.">
+					<div><img src="list.png" class="notes" /> &lt;script&gt; Tag</div>
+				</li>
+				<li id="sub5" class="hiddenListitem" data-notes="Microsoft provides a file we should reference in each file (web page or .js file) where you'll be writing jQuery code. This will allow Visual Studio provide the kind of Intellisense we're used to.">
+					<div><img src="list.png" class="notes" /> Intellisense for Visual Studio</div>
+				</li>
+			</ul>
+		</li>
+    <ul>
+	<div id="code" class="column"></div>
+	<div id="info" class="column"></div>
+    <div id="navPrev"><<< Previous</div>
+    <div id="navNext">Next >>></div>
+    <div id="notes"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	var prev = "jQuery101-Intro-2.htm";
+	var next = "jQuery101-Selectors.htm";
+
+	function displayCode(id) {
+		var code = "";
+		$("#code").hide();
+
+		switch (id) {
+			case "1":
+				code += '<span class="highlight">';
+				code += '&lt;script';
+				code += spaces(4) + 'src="/scripts/jquery-1.6.4.min.js" type="text/javascript"&gt;';
+				code += spaces(0) + '&lt;/script&gt;';
+				code += '</span>';
+				break;
+			case "2":
+				code += 'Production: jquery-1.6.4.js';
+				code += spaces(0) + 'Testing: jquery-1.6.4.min.js';
+				break;
+			case "3":
+				code += '<span class="highlight">';
+				code += '&lt;script';
+				code += spaces(4) + 'src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"';
+				code += spaces(4) + 'type="text/javascript"&gt;';
+				code += spaces(0) + '&lt;/script&gt;';
+				code += spaces(0);
+				code += spaces(0) + '&lt;script';
+				code += spaces(4) + 'src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.4.min.js"';
+				code += spaces(4) + 'type="text/javascript"&gt;';
+				code += spaces(0) + '&lt;/script&gt;';
+				code += '</span>';
+				code += spaces(0);
+				code += spaces(0) + "Jon Galloway's article on creating a fallback option if a CDN is down (very rare):";
+				code += spaces(4) + '<a href="http://weblogs.asp.net/jgalloway/archive/2010/01/21/using-cdn-hosted-jquery-with-a-local-fall-back-copy.aspx" target="_blank">http://weblogs.asp.net/jgalloway/archive/2010/01/21/using-cdn-hosted-jquery-with-a-local-fall-back-copy.aspx</a>';
+				break;
+			case "4":
+				code += '<span class="highlight">';
+				code += '&lt;script type="text/javascript"&gt;';
+				code += spaces(4) + '...';
+				code += spaces(4) + '...';
+				code += spaces(4) + '...';
+				code += spaces(0) + '&lt;/script&gt;';
+				code += '</span>';
+				break;
+			case "5":
+				code += '<span class="highlight">';
+				code += '/// &lt;reference path="/Scripts/jquery-1.6.4.js" /&gt;';
+				code += '</span>';
+				break;
+		}
+
+		if (code != "") $("#code").html(code).show();
+	}
+</script>

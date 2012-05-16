@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>jQuery 101 - What's Next? / Summary / Resources</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="common.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="arrow"></div>
+    <div id="pageHeader">jQuery 101 - Making JavaScript Fun Again</div>
+    <div id="topic">What's Next? / Summary / Resources</div>
+    <ul>
+    	<li id="sub1" class="listitem" data-notes="Just start using it! Experiment with Cody Lindley's Selector page. Play around with its AJAX capabilities. Google (Bing) the tons of resources out there. And research the resources curated by Elijah Manor.">
+			<p><img src="list.png" class="notes" /> What's Next?</p>
+		</li>
+    	<li id="sub2" class="listitem" data-notes="jQuery is the most fun I've had with an API in over 20 years (since FUNCky.lib for Clipper). You can feel like you have total control over your web pages, and can get so much done in such a short period of time, just by touching the surface. I don't even know half of the API, and can still be productive.">
+			<p><img src="list.png" class="notes" /> Summary</p>
+		</li>
+    	<li id="sub3" class="listitem" data-notes="">
+			<p><img src="list.png" class="notes" /> jQuery Documentation</p>
+		</li>
+    	<li id="sub4" class="listitem" data-notes="">
+			<div><img src="list.png" class="notes" /> jQuery Selector Documentation</span></div>
+		</li>
+    	<li id="sub5" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> jQuery Event Documentation</span>
+		</li>
+    	<li id="sub6" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> jQuery Manipulation Documentation</span>
+		</li>
+    	<li id="sub7" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> jQuery Tutorials</span>
+		</li>
+    	<li id="sub8" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> Cody Lindley's jQuery Selector Page</span>
+		</li>
+    	<li id="sub9" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> Elijah Manor's Links</span>
+		</li>
+    	<li id="sub10" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> Mark Freedman's Links</span>
+		</li>
+    <ul>
+	<div id="code" class="column"></div>
+	<div id="info" class="column"></div>
+    <div id="navPrev"><<< Previous</div>
+    <div id="notes"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	var prev = "jQuery101-Manipulation.htm";
+
+    $(document).ready(function() {
+
+    });
+
+	function displayCode(id) {
+		var code = "";
+		$("#code").hide();
+
+		switch (id) {
+			case "3":
+				code += 'jQuery Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/" target="_blank">http://api.jquery.com/</a>';
+				break;
+			case "4":
+				code += 'jQuery Selector Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/category/selectors/" target="_blank">http://api.jquery.com/category/selectors/</a>';
+				break;
+			case "5":
+				code += 'jQuery Event Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/category/events/" target="_blank">http://api.jquery.com/category/events/</a>';
+				break;
+			case "6":
+				code += 'jQuery Manipulation Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/category/manipulation/" target="_blank">http://api.jquery.com/category/manipulation/</a>';
+				break;
+			case "7":
+				code += "jQuery Tutorials:";
+				code += spaces(4) + '<a href="http://docs.jquery.com/Tutorials" target="_blank">http://docs.jquery.com/Tutorials</a>';
+				break;
+			case "8":
+				code += "Cody Lindley's jQuery Selector Page:";
+				code += spaces(4) + '<a href="http://codylindley.com/jqueryselectors/" target="_blank">http://codylindley.com/jqueryselectors/</a>';
+				break;
+			case "9":
+				code += "Elijah Manor's Blog:";
+				code += spaces(4) + '<a href="http://www.elijahmanor.com/" target="_blank">http://www.elijahmanor.com/</a>';
+				code += spaces(0);
+				code += spaces(0) + "Elijah Manor's Web Dev Tweets:";
+				code += spaces(4) + '<a href="http://webdevtweets.blogspot.com/" target="_blank">http://webdevtweets.blogspot.com/</a>';
+				code += spaces(0);
+				code += spaces(0) + "Elijah Manor's Twitter Handle:";
+				code += spaces(4) + '<a href="http://twitter.com/#!/elijahmanor" target="_blank">@ElijahManor</a>';
+				break;
+			case "10":
+				code += "Mark Freedman's Blog:";
+				code += spaces(4) + '<a href="http://MarkFreedman.com/" target="_blank">http://MarkFreedman.com/</a>';
+				code += spaces(0);
+				code += spaces(0) + "Mark Freedman's Twitter Handle:";
+				code += spaces(4) + '<a href="http://twitter.com/#!/markfreedman" target="_blank">@MarkFreedman</a>';
+				code += spaces(0);
+				code += spaces(0) + "Mark Freedman's Email:";
+				code += spaces(4) + '<a href="mailto:Mark@MarkFreedman.com">Mark@MarkFreedman.com</a>';
+				break;
+		}
+
+		if (code != "") $("#code").html(code).show();
+	}
+</script>

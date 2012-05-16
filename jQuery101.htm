@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>jQuery 101 - Making JavaScript Fun</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="company">Mark Freedman's <em>Overloaded Brain</em> presents...</div>
+    <div class="title">jQuery 101</div>
+    <div class="subtitle">Making JavaScript Fun</div>
+    <div id="navNext">Next >>></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("body")
+            .css("font-family", "helvetica")
+            .css("background-color", "black");
+
+
+        $(".company")
+            .css("font-size", "20pt")
+            .css("font-weight", "bold")
+            .css("color", "white")
+            .animate({marginTop: "10%"})
+            .animate({marginLeft: "30%"}, 1000);
+
+
+        $(".title")
+            .css("font-weight", "bold")
+            .css("color", "yellow")
+            .animate({
+                fontSize: "96pt",
+                marginLeft: "35%"
+            }, 600);
+
+
+        $(".subtitle")
+            .css("font-size", "36pt")
+            .css("color", "yellow")
+            .animate({marginLeft: "35%"}, "slow")
+            .animate({opacity: .5}, 2000);
+
+
+        $("#navNext")
+            .click(function() {
+            	window.location.href = "jQuery101-Agenda.htm";
+            });
+    });
+</script>

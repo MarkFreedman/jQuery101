@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>jQuery 101 - Introduction</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="common.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="arrow"></div>
+    <div id="pageHeader">jQuery 101 - Making JavaScript Fun Again</div>
+    <div id="topic">Why JavaScript?</div>
+    <ul>
+    	<li id="main" data-notes="There are several reasons to use JavaSript for handling client-side DOM manipulation (THE reason).">
+			<p><img src="list.png" class="notes" /> Reasons for Using JavaScript?</p>
+			<ul>
+				<li id="sub1" class="hiddenListitem" data-notes="Normally, we'd use event-handling declarations via JavaScript (onclick, onload, etc.).">
+					<div><img src="list.png" class="notes" /> Client-Side Event Handling</div>
+				</li>
+				<li id="sub2" class="hiddenListitem" data-notes='One of the first "advanced" uses I had for JavaScript was the ability to avoid pop-up blockers when trying to legitimately improve the user experience with a dialog box.'>
+					<div><img src="list.png" class="notes" /> Avoid Pop-Up Windows with Floating DIVs</div>
+				</li>
+				<li id="sub3" class="hiddenListitem" data-notes="Of course, using JavaScript to hide and unhide items has been a very common need.">
+					<div><img src="list.png" class="notes" /> Dynamically Hide & Unhide Items</div>
+				</li>
+				<li id="sub4" class="hiddenListitem" data-notes="Being able to do client-side validation was an early requirement for making responsive Web-based apps that didn't necessarily require a round-trip. Highlighting fields in error was part of this requirement.">
+					<div><img src="list.png" class="notes" /> Highlight Fields (Errors, etc.)</div>
+				</li>
+				<li id="sub5" class="hiddenListitem" data-notes="Early on, making direct AJAX calls via JavaScript was a necessary evil (before third-party JavaScript libraries eased the pain, albeit inconsistently).">
+					<div><img src="list.png" class="notes" /> AJAX Calls</div>
+				</li>
+				<li id="sub6" class="hiddenListitem" data-notes="Did I miss anything? It's been a while since I used JavaScript exclusively, so I may have missed another common use case.">
+					<div><img src="list.png" class="notes" /> What else?</div>
+				</li>
+			</ul>
+		</li>
+    <ul>
+	<div id="code" class="column"></div>
+	<div id="info" class="column"></div>
+    <div id="navPrev"><<< Previous</div>
+    <div id="navNext">Next >>></div>
+    <div id="notes"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	var prev = "jQuery101-Agenda.htm";
+	var next = "jQuery101-Intro-2.htm";
+
+	function displayCode(id) {
+		var code = "";
+		$("#code").hide();
+
+		switch (id) {
+		}
+
+		if (code != "") $("#code").html(code).show();
+	}
+</script>

@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>jQuery 101 - DOM Manipulation</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="common.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="arrow"></div>
+    <div id="pageHeader">jQuery 101 - Making JavaScript Fun Again</div>
+    <div id="topic">DOM Manipulation</div>
+    <ul>
+    	<li id="sub1" class="listitem" data-notes="Classes are not only used for adding and removing styles to HTML objects. jQuery makes it easy to use classes for storing state as well. In this example, we're adding a new class, &quot;modified&quot;, to track that we've changed the value of a button's text.">
+			<p><img src="list.png" class="notes" /> Adding and Removing Classes (.addClass, .hasClass, .removeClass)</p>
+		</li>
+    	<li id="sub2" class="listitem" data-notes="Dynamically adding and removing HTML elements is a breeze with jQuery. But don't forget that the wiring of events don't come without some forethought.">
+			<div><img src="list.png" class="notes" /> Adding and Removing Web Elements (.append, .remove)</span></div>
+		</li>
+    	<li id="sub3" class="listitem" data-notes="In addition to adding and removing classes, jQuery makes it easy to manipulate CSS.">
+			<img src="list.png" class="notes" /> <span class="byClass"> Querying and Manipulating Styles (.css)</span>
+		</li>
+    	<li id="sub4" class="listitem" data-notes="jQuery also makes it easy to query and update HTML attributes.">
+			<img src="list.png" class="notes" /> <span class="byClass"> Querying and Manipulating Attributes (.attr)</span>
+		</li>
+    	<li id="sub5" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span class="byClass"> Manipulating the Text and HTML of Elements (.text, .val, .html)</span>
+		</li>
+    	<li id="sub6" class="listitem" data-notes="jQuery makes AJAX easy, but its functionality is a topic unto itself. We'll just introduce it here.">
+			<img src="list.png" class="notes" /> <span id="byMultiple"> Intro to AJAX</span>
+		</li>
+    	<li id="sub7" class="listitem" data-notes="">
+			<img src="list.png" class="notes" /> <span id="more">More Information</span>
+		</li>
+    <ul>
+	<div id="code" class="column"></div>
+	<div id="info" class="column"></div>
+    <div id="navPrev"><<< Previous</div>
+    <div id="navNext">Next >>></div>
+    <div id="notes"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	var prev = "jQuery101-Events.htm";
+	var next = "jQuery101-Summary.htm";
+
+    $(document).ready(function() {
+
+		$("#classButton").live("click", function(e) {
+			if ($(this).hasClass("modified")) {
+				$(this).removeClass("modified");
+				$(this).text("Click Me");
+			} else {
+				$(this).addClass("modified");
+				$(this).text("You clicked me!");
+			}
+
+    		alert($("#classButton").attr("class"));
+		});
+
+		$("#appendButton").live("click", function(e) {
+			if ($(this).hasClass("added")) {
+				$("#newButton").remove();
+				$(this).removeClass("added");
+				$(this).text("Add Button");
+			} else {
+				$("#code").append("<button id='newButton'>New Button</button>");
+				$(this).addClass("added");
+				$(this).text("Remove Button");
+			}
+		});
+
+		$("#cssButton").live("click", function(e) {
+		    if ($(this).hasClass("red")) {
+		        $(".highlight").css( {
+		        	"color": "yellow",
+		        	"font-size": "24px"
+		        });
+		        $(this).removeClass("red");
+		        $(this).text("Change Highlight to Red and Large");
+		    } else {
+		        $(".highlight").css( {
+		        	"color": "red",
+		        	"font-size": "30px"
+		        });
+		        $(this).addClass("red");
+		        $(this).text("Change Highlight to Yellow and Small");
+		    }
+		});
+
+		$("#attrButton").live("click", function(e) {
+		    if ($(this).attr("title") == "" || $(this).attr("title") == undefined) {
+		        $(this).attr("title", "You can click this button.");
+				$(this).text("Click to Remove the Title");
+		    } else {
+		        $(this).attr("title", "");
+				$(this).text("Click to Add a Title");
+		    }
+		});
+
+		$(":checkbox").live("change", function(e) {
+		    if ($(this).attr("checked")) {
+		        $("#value").html("<span>This is a span.</span>");
+		        $(this).val("HTML");
+		    } else {
+		        $("#value").text("<span>This is a span.</span>");
+		        $(this).val("Text");
+		    }
+
+	        $("#valSetting").text($(":checkbox").val());
+		});
+
+    });
+
+	function displayCode(id) {
+		var code = "";
+		$("#code").hide();
+
+		switch (id) {
+			case "1":
+				code += '<button id="classButton">Click Me</button>';
+				code += spaces(0);
+				code += spaces(0) + '$("#classButton").live("click", function(e) {';
+				code += '<span class="highlight">';
+				code += spaces(4) + 'if ($(this).hasClass("modified")) {';
+				code += spaces(8) + '$(this).removeClass("modified");';
+				code += '</span>';
+				code += spaces(8) + '$(this).text("Click Me");';
+				code += spaces(4) + '} else {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$(this).addClass("modified");';
+				code += '</span>';
+				code += spaces(8) + '$(this).text("You clicked me!");';
+				code += spaces(4) + '}';
+				code += spaces(0);
+				code += '<span class="highlight">';
+				code += spaces(4) + 'alert($("#classButton").attr("class"));';
+				code += '</span>';
+				code += spaces(0) + '});';
+				$("#code").unbind("click");
+				break;
+			case "2":
+				code += '<button id="appendButton">Add Button</button>';
+				code += spaces(0);
+				code += spaces(0) + '$("#appendButton").live("click", function(e) {';
+				code += spaces(4) + 'if ($(this).hasClass("added")) {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#newButton").remove();';
+				code += '</span>';
+				code += spaces(8) + '$(this).removeClass("added");';
+				code += spaces(8) + '$(this).text("Add Button");';
+				code += spaces(4) + '} else {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#code").append("&lt;button id=&quot;newButton&quot;&gt;New Button&lt;/button&gt;");';
+				code += '</span>';
+				code += spaces(8) + '$(this).addClass("added");';
+				code += spaces(8) + '$(this).text("Remove Button");';
+				code += spaces(4) + '}';
+				code += spaces(0) + '});';
+				$("#code").unbind("click");
+				break;
+			case "3":
+				code += '<button id="cssButton">Change Highlight to Red and Large</button>';
+				code += spaces(0);
+				code += spaces(0) + '$("#cssButton").live("click", function(e) {';
+				code += spaces(4) + 'if ($(this).hasClass("red")) {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#code").css( {';
+				code += spaces(12) + '"color": "yellow",';
+				code += spaces(12) + '"font-size": "24px"';
+				code += spaces(8) + '});';
+				code += '</span>';
+				code += spaces(8) + '$(this).removeClass("red");';
+				code += spaces(8) + '$(this).text("Change Highlight to Red and Large");';
+				code += spaces(4) + '} else {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#code").css( {';
+				code += spaces(12) + '"color": "red",';
+				code += spaces(12) + '"font-size": "30px"';
+				code += spaces(8) + '});';
+				code += '</span>';
+				code += spaces(8) + '$(this).addClass("red");';
+				code += spaces(8) + '$(this).text("Change Highlight to Yellow and Small");';
+				code += spaces(4) + '}';
+				code += spaces(0) + '});';
+				$("#code").unbind("click");
+				break;
+			case "4":
+				code += '<button id="attrButton">Click to Add a Title</button>';
+				code += spaces(0);
+				code += spaces(0) + '$("#attrButton").live("click", function(e) {';
+				code += '<span class="highlight">';
+				code += spaces(4) + 'if ($(this).attr("title") == "" || $(this).attr("title") == undefined) {';
+				code += spaces(8) + '$(this).attr("title", "You can click this button.");';
+				code += '</span>';
+				code += spaces(8) + '$(this).text("Click to Remove the Title");';
+				code += spaces(4) + '} else {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$(this).attr("title", "");';
+				code += '</span>';
+				code += spaces(8) + '$(this).text("Click to Add a Title");';
+				code += spaces(4) + '}';
+				code += spaces(0) + '});';
+				$("#code").unbind("click");
+				break;
+			case "5":
+				code += '<input type="checkbox" val="Text" />Check to treat as HTML. Uncheck to display as text.';
+				code += '<div id="value" class="comment">&lt;span&gt;This is a span.&lt;/span&gt;</div>';
+				code += 'The above DIV is treated as: <span id="valSetting" class="comment">Text</span>';
+				code += spaces(0) + '<hr />';
+				code += spaces(0) + '$(":checkbox").live("change", function(e) {';
+				code += spaces(4) + 'if ($(this).attr("checked")) {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#value").html("&lt;span&gt;This is a span.&lt;/span&gt;");';
+				code += spaces(8) + '$(this).val("HTML");';
+				code += '</span>';
+				code += spaces(4) + '} else {';
+				code += '<span class="highlight">';
+				code += spaces(8) + '$("#value").text("&lt;span>This is a span.&lt;/span&gt;");';
+				code += spaces(8) + '$(this).val("Text");';
+				code += '</span>';
+				code += spaces(4) + '}';
+				code += spaces(0);
+				code += '<span class="highlight">';
+				code += spaces(4) + '$("#valSetting").text($(":checkbox").val());';
+				code += '</span>';
+				code += spaces(0) + '});';
+				$("#code").unbind("click");
+				break;
+			case "6":
+				code += '<span class="highlight">';
+				code += '$.getJSON("/Company/SaveAs",';
+				code += spaces(4) + '{';
+				code += spaces(8) + '"companyId": $("#companyId").val(), ';
+				code += spaces(8) + '"name": $("#newCompanyName").val()';
+				code += spaces(4) + '},';
+				code += spaces(4) + 'function(result) {';
+				code += spaces(8) + 'if (result.Message != "") {';
+				code += spaces(12) + 'alert(result.Message);';
+				code += spaces(8) + '} else {';
+				code += spaces(12) + '$("#saveAsDialog").dialog("close");';
+				code += spaces(8) + '}';
+				code += spaces(4) + '}';
+				code += spaces(0) + ');';
+				code += '</span>';
+				code += spaces(0);
+				code += spaces(0) + '-- Or --';
+				code += spaces(0);
+				code += '<span class="highlight">';
+				code += spaces(0) + '$.ajax({';
+				code += spaces(4) + 'url: "/Customer/Save",';
+				code += spaces(4) + 'type: "POST",';
+				code += spaces(4) + 'dataType: "json",';
+				code += spaces(4) + 'data: jsonData,';
+				code += spaces(4) + 'contentType: "application/json; charset=utf-8",';
+				code += spaces(4) + 'success: function(data) {';
+				code += spaces(8) + 'if (data == "") {';
+				code += spaces(12) + '$("#changed").val("false");';
+				code += spaces(12) + '$("#message").text("Saved").show();';
+				code += spaces(8) + '} else {';
+				code += spaces(12) + '$("#message").text("Save failed: " + data.errorMessage).addClass("error").show();';
+				code += spaces(8) + '}';
+				code += spaces(4) + 'error: function(data) {';
+				code += spaces(8) + '$("#message").text("Save failed: " + data.responseText).addClass("error").show();';
+				code += spaces(4) + '}';
+				code += spaces(0) + '});';
+				code += '</span>';
+				$("#code").unbind("click");
+				break;
+			case "7":
+				code += 'jQuery Manipulation Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/category/manipulation/" target="_blank">http://api.jquery.com/category/manipulation/</a>';
+				code += spaces(0);
+				code += spaces(0) + 'jQuery Documentation:';
+				code += spaces(4) + '<a href="http://api.jquery.com/" target="_blank">http://api.jquery.com/</a>';
+				break;
+		}
+
+		if (code != "") $("#code").html(code).show();
+	}
+</script>
